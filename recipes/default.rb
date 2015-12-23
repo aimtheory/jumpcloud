@@ -51,7 +51,7 @@ remote_file "#{Chef::Config[:file_cache_path]}/kickstart.sh" do
 end
 
 execute 'agent_install' do
-  command "sudo bash #{Chef::Config[:file_cache_path]}/kickstart.sh"
+  command "bash #{Chef::Config[:file_cache_path]}/kickstart.sh"
   path [
     '/sbin',
     '/bin',
