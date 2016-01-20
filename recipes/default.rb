@@ -26,12 +26,6 @@ end
 db_name = node['jumpcloud']['databag_name']
 dbi_name = node['jumpcloud']['databagitem_name']
 
-if !File.exists?('/etc/chef/encrypted_data_bag_secret')
-  Chef::Log.fatal('File does not exist: /etc/chef/encrypted_data_bag_secret')
-  raise "You must upload the file used to decrypt the '#{dbi_name}' item from
-         the '#{db_name}' data bag to this location."
-end
-
 jc_creds = Chef::EncryptedDataBagItem.load(db_name, dbi_name)
 
 connection_key = jc_creds['key']
